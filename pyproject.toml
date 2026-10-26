@@ -7,9 +7,10 @@ name = "rock_paper_scissors"
 version = "0.1.0"
 description = "Modular Rock, Paper, Scissors in Python, built to plug in AI/LLM opponents."
 readme = "README.md"
-requires-python = ">=3.11"
+requires-python = ">=3.12"
 license = "MIT"
 authors = [{ name = "Tom Borowiecki" }]
+classifiers = ["Private :: Do Not Upload"]
 dependencies = []
 
 [project.optional-dependencies]
@@ -22,13 +23,16 @@ rock_paper_scissors = "rock_paper_scissors.cli:main"
 packages = ["src/rock_paper_scissors"]
 
 [tool.pytest.ini_options]
+minversion = "9.0"
 testpaths = ["tests"]
 pythonpath = ["src"]
-addopts = "-q"
+addopts = "-q --strict-markers --strict-config"
+xfail_strict = true
+filterwarnings = ["error"]
 
 [tool.ruff]
 line-length = 100
-target-version = "py311"
+target-version = "py312"
 src = ["src", "tests"]
 
 [tool.ruff.lint]

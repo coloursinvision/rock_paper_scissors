@@ -18,7 +18,7 @@ Your move (rock/paper/scissors, q to quit): Game over after 2 round(s). Score: y
 
 ## Quick start
 
-Requires Python 3.11 or later.
+Requires Python 3.12 or later.
 
 ```bash
 git clone https://github.com/coloursinvision/rock_paper_scissors.git
