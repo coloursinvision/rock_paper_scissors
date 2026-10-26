@@ -1,0 +1,10 @@
+name: rock_paper_scissors
+channels:
+  - conda-forge
+  - nodefaults
+dependencies:
+  - python=3.12.*
+  - pip>=26.2
+  - hatchling>=1.32
+  - pytest>=9.1
+  - ruff>=0.17
