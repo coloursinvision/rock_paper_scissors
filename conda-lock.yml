@@ -1698,51 +1698,51 @@ package:
   category: main
   optional: false
 - name: platformdirs
-  version: 4.13.6
+  version: 4.13.7
   manager: conda
   platform: linux-64
   dependencies:
     python: '>=3.11'
-  url: https://conda.anaconda.org/conda-forge/noarch/platformdirs-4.13.6-pyh5ded981_0.conda
+  url: https://conda.anaconda.org/conda-forge/noarch/platformdirs-4.13.7-pyh5ded981_0.conda
   hash:
-    md5: 6c69386c2ac973d86beea8f25866b550
-    sha256: a5f55438f77c22b0f1f99431e6688571fda00f4646317b2dfacae4b4932a76c6
+    md5: 6e3ebb6d1962f0c26e2d92845b0032f9
+    sha256: ffeb3eb9aa6adb38ce43d04ecebc05dcab7ec76619d8cb0ce69332e936d0d794
   category: main
   optional: false
 - name: platformdirs
-  version: 4.13.6
+  version: 4.13.7
   manager: conda
   platform: osx-64
   dependencies:
     python: '>=3.11'
-  url: https://conda.anaconda.org/conda-forge/noarch/platformdirs-4.13.6-pyh5ded981_0.conda
+  url: https://conda.anaconda.org/conda-forge/noarch/platformdirs-4.13.7-pyh5ded981_0.conda
   hash:
-    md5: 6c69386c2ac973d86beea8f25866b550
-    sha256: a5f55438f77c22b0f1f99431e6688571fda00f4646317b2dfacae4b4932a76c6
+    md5: 6e3ebb6d1962f0c26e2d92845b0032f9
+    sha256: ffeb3eb9aa6adb38ce43d04ecebc05dcab7ec76619d8cb0ce69332e936d0d794
   category: main
   optional: false
 - name: platformdirs
-  version: 4.13.6
+  version: 4.13.7
   manager: conda
   platform: osx-arm64
   dependencies:
     python: '>=3.11'
-  url: https://conda.anaconda.org/conda-forge/noarch/platformdirs-4.13.6-pyh5ded981_0.conda
+  url: https://conda.anaconda.org/conda-forge/noarch/platformdirs-4.13.7-pyh5ded981_0.conda
   hash:
-    md5: 6c69386c2ac973d86beea8f25866b550
-    sha256: a5f55438f77c22b0f1f99431e6688571fda00f4646317b2dfacae4b4932a76c6
+    md5: 6e3ebb6d1962f0c26e2d92845b0032f9
+    sha256: ffeb3eb9aa6adb38ce43d04ecebc05dcab7ec76619d8cb0ce69332e936d0d794
   category: main
   optional: false
 - name: platformdirs
-  version: 4.13.6
+  version: 4.13.7
   manager: conda
   platform: win-64
   dependencies:
     python: '>=3.11'
-  url: https://conda.anaconda.org/conda-forge/noarch/platformdirs-4.13.6-pyh5ded981_0.conda
+  url: https://conda.anaconda.org/conda-forge/noarch/platformdirs-4.13.7-pyh5ded981_0.conda
   hash:
-    md5: 6c69386c2ac973d86beea8f25866b550
-    sha256: a5f55438f77c22b0f1f99431e6688571fda00f4646317b2dfacae4b4932a76c6
+    md5: 6e3ebb6d1962f0c26e2d92845b0032f9
+    sha256: ffeb3eb9aa6adb38ce43d04ecebc05dcab7ec76619d8cb0ce69332e936d0d794
   category: main
   optional: false
 - name: pluggy
