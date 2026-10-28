@@ -18,21 +18,33 @@ Your move (rock/paper/scissors, q to quit): Game over after 2 round(s). Score: y
 
 ## Quick start
 
-Requires Python 3.12 or later.
+Requires conda 26.5 or later, which reads the lock file natively, for
+example from [Miniforge](https://github.com/conda-forge/miniforge). The
+package requires Python 3.12 or later; the locked environment provides
+Python 3.12.
 
 ```bash
 git clone https://github.com/coloursinvision/rock_paper_scissors.git
 cd rock_paper_scissors
-python -m venv .venv
-source .venv/bin/activate        # Windows: .venv\Scripts\activate
-pip install -e ".[dev]"
+conda create --name rock_paper_scissors --file conda-lock.yml
+conda activate rock_paper_scissors
+python -m pip install --no-deps --no-build-isolation --no-index --editable .
 
 rock_paper_scissors              # play until you type q
 rock_paper_scissors --opponent copycat --rounds 5
+
+ruff check .
+ruff format --check .
 pytest
 ```
 
 `python -m rock_paper_scissors` runs the same command.
+
+Every dependency comes from `conda-lock.yml`, which pins each package
+with its hash for linux-64, osx-64, osx-arm64 and win-64. The lock file
+is generated from `environment.yml`, the list of direct dependencies.
+The `pip` step installs only this package, without dependencies, build
+isolation or a package index.
 
 ## How it is organised
 
