@@ -1,3 +1,4 @@
+import runpy
 from collections.abc import Sequence
 
 import pytest
@@ -76,3 +77,29 @@ def test_cli_stops_after_requested_rounds(
     monkeypatch.setattr("builtins.input", lambda _prompt: "s")
     assert main(["--rounds", "3", "--opponent", "copycat", "--seed", "7"]) == 0
     assert "Game over after 3 round(s)" in capsys.readouterr().out
+
+
+def test_cli_rejects_fewer_than_one_round(capsys: pytest.CaptureFixture[str]) -> None:
+    with pytest.raises(SystemExit) as excinfo:
+        main(["--rounds", "0"])
+    assert excinfo.value.code == 2
+    assert "--rounds must be at least 1" in capsys.readouterr().err
+
+
+def test_cli_ends_cleanly_on_keyboard_interrupt(
+    monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture[str]
+) -> None:
+    def interrupt(_prompt: str) -> str:
+        raise KeyboardInterrupt
+
+    monkeypatch.setattr("builtins.input", interrupt)
+    assert main(["--seed", "1"]) == 0
+    assert "Game over after 0 round(s)" in capsys.readouterr().out
+
+
+def test_module_entry_point_runs_the_cli(monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.setattr("sys.argv", ["rock_paper_scissors", "--rounds", "1", "--seed", "1"])
+    monkeypatch.setattr("builtins.input", lambda _prompt: "r")
+    with pytest.raises(SystemExit) as excinfo:
+        runpy.run_module("rock_paper_scissors", run_name="__main__")
+    assert excinfo.value.code == 0
