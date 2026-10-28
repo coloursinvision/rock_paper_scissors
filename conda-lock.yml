@@ -13,10 +13,10 @@
 version: 1
 metadata:
   content_hash:
-    linux-64: 746278de3fa29d053bf73c9cacd9a9d15b19ca20864209004b5dd7ef55ada77c
-    osx-64: 9109f149fcded302d78d746be83f3a047444aceee3c220d4d8fe962c31aa545b
-    osx-arm64: e5bda6ee5d9ade1c3e9f330278e26dba5c7d1d4aafed4d8567dd284b5555dd61
-    win-64: b1356ec8ab17a86790937fd48ddb80a46f3828974d8c845b6a8b9786abbdf985
+    linux-64: 862b80f7c14be03d96c8dc4c054064d9e3609cfa7af407be7d91f6f6f90829bd
+    osx-64: 11c76c2d41a7e946172379c7d0d2886dd9e3243478ab9bfd730732465c1a562b
+    osx-arm64: 29f8b3f9b78d2606ff34a8d6d2a5197622bd0229d97875c9b3b5178137b0d825
+    win-64: f26c5f3daf976ccd51897167237ba7c94ce0373d805e7ff2bb40e31fb0325d61
   channels:
   - url: conda-forge
     used_env_vars: []
@@ -1861,6 +1861,62 @@ package:
     sha256: d808ea63d685cc3e096a62a85820864b65467b4c273c7649a1450112f0295aa4
   category: main
   optional: false
+- name: pre-commit-hooks
+  version: 6.0.0
+  manager: conda
+  platform: linux-64
+  dependencies:
+    python: '>=3.10'
+    ruamel.yaml: '>=0.15'
+    tomli: '>=1.1.0'
+  url: https://conda.anaconda.org/conda-forge/noarch/pre-commit-hooks-6.0.0-pyhd8ed1ab_0.conda
+  hash:
+    md5: 00a7fda6ccb684f36a8f2f0a17851da9
+    sha256: 292e8666ed5338b1a43a3a7f21030e95e393cfa245725c3d502d87481c4d6ef9
+  category: main
+  optional: false
+- name: pre-commit-hooks
+  version: 6.0.0
+  manager: conda
+  platform: osx-64
+  dependencies:
+    python: '>=3.10'
+    ruamel.yaml: '>=0.15'
+    tomli: '>=1.1.0'
+  url: https://conda.anaconda.org/conda-forge/noarch/pre-commit-hooks-6.0.0-pyhd8ed1ab_0.conda
+  hash:
+    md5: 00a7fda6ccb684f36a8f2f0a17851da9
+    sha256: 292e8666ed5338b1a43a3a7f21030e95e393cfa245725c3d502d87481c4d6ef9
+  category: main
+  optional: false
+- name: pre-commit-hooks
+  version: 6.0.0
+  manager: conda
+  platform: osx-arm64
+  dependencies:
+    python: '>=3.10'
+    ruamel.yaml: '>=0.15'
+    tomli: '>=1.1.0'
+  url: https://conda.anaconda.org/conda-forge/noarch/pre-commit-hooks-6.0.0-pyhd8ed1ab_0.conda
+  hash:
+    md5: 00a7fda6ccb684f36a8f2f0a17851da9
+    sha256: 292e8666ed5338b1a43a3a7f21030e95e393cfa245725c3d502d87481c4d6ef9
+  category: main
+  optional: false
+- name: pre-commit-hooks
+  version: 6.0.0
+  manager: conda
+  platform: win-64
+  dependencies:
+    python: '>=3.10'
+    ruamel.yaml: '>=0.15'
+    tomli: '>=1.1.0'
+  url: https://conda.anaconda.org/conda-forge/noarch/pre-commit-hooks-6.0.0-pyhd8ed1ab_0.conda
+  hash:
+    md5: 00a7fda6ccb684f36a8f2f0a17851da9
+    sha256: 292e8666ed5338b1a43a3a7f21030e95e393cfa245725c3d502d87481c4d6ef9
+  category: main
+  optional: false
 - name: psutil
   version: 7.2.2
   manager: conda
@@ -2497,6 +2553,117 @@ package:
   hash:
     md5: 9347fd56a002e6b58946831d48fe62f6
     sha256: d6782b430e6dce4fe8c7ac118cd988d5a193eb4a7f60741edfaede58016b6110
+  category: main
+  optional: false
+- name: ruamel.yaml
+  version: 0.19.1
+  manager: conda
+  platform: linux-64
+  dependencies:
+    python: '>=3.10'
+    ruamel.yaml.clib: '>=0.2.15'
+  url: https://conda.anaconda.org/conda-forge/noarch/ruamel.yaml-0.19.1-pyhcf101f3_0.conda
+  hash:
+    md5: 06ad944772941d5dae1e0d09848d8e49
+    sha256: b48bebe297a63ae60f52e50be328262e880702db4d9b4e86731473ada459c2a1
+  category: main
+  optional: false
+- name: ruamel.yaml
+  version: 0.19.1
+  manager: conda
+  platform: osx-64
+  dependencies:
+    python: '>=3.10'
+    ruamel.yaml.clib: '>=0.2.15'
+  url: https://conda.anaconda.org/conda-forge/noarch/ruamel.yaml-0.19.1-pyhcf101f3_0.conda
+  hash:
+    md5: 06ad944772941d5dae1e0d09848d8e49
+    sha256: b48bebe297a63ae60f52e50be328262e880702db4d9b4e86731473ada459c2a1
+  category: main
+  optional: false
+- name: ruamel.yaml
+  version: 0.19.1
+  manager: conda
+  platform: osx-arm64
+  dependencies:
+    python: '>=3.10'
+    ruamel.yaml.clib: '>=0.2.15'
+  url: https://conda.anaconda.org/conda-forge/noarch/ruamel.yaml-0.19.1-pyhcf101f3_0.conda
+  hash:
+    md5: 06ad944772941d5dae1e0d09848d8e49
+    sha256: b48bebe297a63ae60f52e50be328262e880702db4d9b4e86731473ada459c2a1
+  category: main
+  optional: false
+- name: ruamel.yaml
+  version: 0.19.1
+  manager: conda
+  platform: win-64
+  dependencies:
+    python: '>=3.10'
+    ruamel.yaml.clib: '>=0.2.15'
+  url: https://conda.anaconda.org/conda-forge/noarch/ruamel.yaml-0.19.1-pyhcf101f3_0.conda
+  hash:
+    md5: 06ad944772941d5dae1e0d09848d8e49
+    sha256: b48bebe297a63ae60f52e50be328262e880702db4d9b4e86731473ada459c2a1
+  category: main
+  optional: false
+- name: ruamel.yaml.clib
+  version: 0.2.15
+  manager: conda
+  platform: linux-64
+  dependencies:
+    __glibc: '>=2.17,<3.0.a0'
+    libgcc: '>=15'
+    python: ''
+    python_abi: 3.12.*
+  url: https://conda.anaconda.org/conda-forge/linux-64/ruamel.yaml.clib-0.2.15-py312h1b36aeb_5.conda
+  hash:
+    md5: 47553dd4725a43ef82aadf8f74f6f89c
+    sha256: aa66c32c339873a147da91adc07c7f09fb818dc4c9d86d1173bbef00ad136f5d
+  category: main
+  optional: false
+- name: ruamel.yaml.clib
+  version: 0.2.15
+  manager: conda
+  platform: osx-64
+  dependencies:
+    __osx: '>=11.0'
+    python: ''
+    python_abi: 3.12.*
+  url: https://conda.anaconda.org/conda-forge/osx-64/ruamel.yaml.clib-0.2.15-py312hdc27ec5_5.conda
+  hash:
+    md5: f1add61eb00ec0f5110e8b395f34abb2
+    sha256: 71dd03496a195189edeb2f811a6ab8e42ae4ea3948f75ec834cd6b9b4be8d697
+  category: main
+  optional: false
+- name: ruamel.yaml.clib
+  version: 0.2.15
+  manager: conda
+  platform: osx-arm64
+  dependencies:
+    __osx: '>=11.0'
+    python: ''
+    python_abi: 3.12.*
+  url: https://conda.anaconda.org/conda-forge/osx-arm64/ruamel.yaml.clib-0.2.15-py312hbd136b4_5.conda
+  hash:
+    md5: df5a38827054f077bb694640d5ec0791
+    sha256: 9520fb393ce6b9694c06ee74463f351dfd5f9eb8b52ca985a1dfd571438ee225
+  category: main
+  optional: false
+- name: ruamel.yaml.clib
+  version: 0.2.15
+  manager: conda
+  platform: win-64
+  dependencies:
+    python: ''
+    python_abi: 3.12.*
+    ucrt: '>=10.0.20348.0'
+    vc: '>=14.3,<15'
+    vc14_runtime: '>=14.44.35208'
+  url: https://conda.anaconda.org/conda-forge/win-64/ruamel.yaml.clib-0.2.15-py312he5662c2_5.conda
+  hash:
+    md5: ffb6aab0896e55c02696d4476f895e83
+    sha256: 498bed025312f4e82b628c423ec5a3c942f3afac1ca349432d28ccab87001beb
   category: main
   optional: false
 - name: ruff
