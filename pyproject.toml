@@ -13,9 +13,6 @@ authors = [{ name = "Tom Borowiecki" }]
 classifiers = ["Private :: Do Not Upload"]
 dependencies = []
 
-[project.optional-dependencies]
-dev = ["pytest>=8", "ruff>=0.6"]
-
 [project.scripts]
 rock_paper_scissors = "rock_paper_scissors.cli:main"
 
