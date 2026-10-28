@@ -13,10 +13,10 @@
 version: 1
 metadata:
   content_hash:
-    linux-64: 726b7ec5c8c039d4bf1784d40a5dc3c1a33a5094184d756110de107f2e50065b
-    osx-64: faca503a3ae7b7f31b22c4dc48538fb58bc33621d9914d87e7177b516f1ba2a8
-    osx-arm64: 56da0c125d63efb2ffe0c54ebcc32231ba17704aaa8b232a96eef90ce0f9d12a
-    win-64: d31b6801dfa2b3e88385e6904ef5c6ad2d1e51a997063af543fb5152fcab81a7
+    linux-64: 50b45ffb95e698e604a5c59cd09793947b394c4deb182c5787504d6537e2a7d3
+    osx-64: c2a297363905ef98dc5c4851ac12999322cd34f1aa8594a7a2996fa6b77fd29b
+    osx-arm64: 06a44b3a41e0d85d0d8fd78277771c3a4d470ac44590db14de52332038dd9aeb
+    win-64: af47e60c54922f67b1f40f044e19bada000eefe43411f7d814e5fda82e5564e5
   channels:
   - url: conda-forge
     used_env_vars: []
@@ -301,6 +301,65 @@ package:
   hash:
     md5: 962b9857ee8e7018c22f2776ffa0b2d7
     sha256: ab29d57dc70786c1269633ba3dff20288b81664d3ff8d21af995742e2bb03287
+  category: main
+  optional: false
+- name: coverage
+  version: 7.17.0
+  manager: conda
+  platform: linux-64
+  dependencies:
+    __glibc: '>=2.17,<3.0.a0'
+    libgcc: '>=15'
+    python: ''
+    python_abi: 3.12.*
+  url: https://conda.anaconda.org/conda-forge/linux-64/coverage-7.17.0-py312h8b7ec3f_0.conda
+  hash:
+    md5: a81316d9901afe9d5ecf4b911fea5ef0
+    sha256: 7c4000ad2433ff3a9cd94c6d4350e6a101fd4ac6d28f9adcb1a8a08bf9b2b3c9
+  category: main
+  optional: false
+- name: coverage
+  version: 7.17.0
+  manager: conda
+  platform: osx-64
+  dependencies:
+    __osx: '>=11.0'
+    python: ''
+    python_abi: 3.12.*
+  url: https://conda.anaconda.org/conda-forge/osx-64/coverage-7.17.0-py312h9d40a6d_0.conda
+  hash:
+    md5: f505d717ca6f49d867fec4378caf0f50
+    sha256: 74e719a82226a3a495d95ef59d83e9ab261eab8b8345138e286e840a7cda149e
+  category: main
+  optional: false
+- name: coverage
+  version: 7.17.0
+  manager: conda
+  platform: osx-arm64
+  dependencies:
+    __osx: '>=11.0'
+    python: ''
+    python_abi: 3.12.*
+  url: https://conda.anaconda.org/conda-forge/osx-arm64/coverage-7.17.0-py312h05c94ff_0.conda
+  hash:
+    md5: 91aedda9098694d11ec9815a486630d5
+    sha256: 51508d754f2af932870c7eb37ded15ecb986fad0ea005428f2badc91ea3dc34c
+  category: main
+  optional: false
+- name: coverage
+  version: 7.17.0
+  manager: conda
+  platform: win-64
+  dependencies:
+    python: ''
+    python_abi: 3.12.*
+    ucrt: '>=10.0.20348.0'
+    vc: '>=14.3,<15'
+    vc14_runtime: '>=14.44.35208'
+  url: https://conda.anaconda.org/conda-forge/win-64/coverage-7.17.0-py312h6fa65f5_0.conda
+  hash:
+    md5: fba4fec309860b8d3c40f87196236e70
+    sha256: 6b038219d51992c34bd56662982cea7f2bce685fe3ce2daa38f83a66ff59efb6
   category: main
   optional: false
 - name: cpython
