@@ -41,3 +41,13 @@ files = ["src", "tests"]
 strict = true
 warn_unreachable = true
 enable_error_code = ["ignore-without-code", "redundant-expr", "truthy-bool", "possibly-undefined"]
+
+[tool.coverage.run]
+branch = true
+source_pkgs = ["rock_paper_scissors"]
+source_dirs = ["tests"]
+
+[tool.coverage.report]
+fail_under = 100
+show_missing = true
+skip_covered = true
