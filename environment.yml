@@ -10,3 +10,4 @@ dependencies:
   - ruff>=0.17
   - mypy>=2.4
   - coverage>=7.17
+  - pre-commit>=4.7
