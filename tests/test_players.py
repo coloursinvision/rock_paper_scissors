@@ -1,4 +1,5 @@
 import random
+from collections.abc import Callable
 
 import pytest
 
@@ -15,11 +16,11 @@ from rock_paper_scissors.players import (
 )
 
 
-def fake_input(*answers):
+def fake_input(*answers: str) -> Callable[[str], str]:
     """An input() replacement that returns the given answers one by one."""
     queue = list(answers)
 
-    def _input(prompt):
+    def _input(prompt: str) -> str:
         if not queue:
             raise EOFError
         return queue.pop(0)
@@ -27,56 +28,56 @@ def fake_input(*answers):
     return _input
 
 
-def test_human_retries_until_valid_move():
-    messages = []
+def test_human_retries_until_valid_move() -> None:
+    messages: list[str] = []
     human = HumanPlayer(input_fn=fake_input("banana", "p"), output_fn=messages.append)
     assert human.choose([]) is Move.PAPER
     assert len(messages) == 1 and "not a move" in messages[0]
 
 
 @pytest.mark.parametrize("word", ["q", "quit", "EXIT"])
-def test_human_can_quit(word):
+def test_human_can_quit(word: str) -> None:
     human = HumanPlayer(input_fn=fake_input(word))
     with pytest.raises(QuitGameError):
         human.choose([])
 
 
-def test_human_end_of_input_quits():
+def test_human_end_of_input_quits() -> None:
     human = HumanPlayer(input_fn=fake_input())
     with pytest.raises(QuitGameError):
         human.choose([])
 
 
-def test_human_parser_is_replaceable():
+def test_human_parser_is_replaceable() -> None:
     # Any callable from text to Move can replace Move.parse.
     human = HumanPlayer(input_fn=fake_input("I'll throw a stone"), parse=lambda _: Move.ROCK)
     assert human.choose([]) is Move.ROCK
 
 
-def test_random_player_is_reproducible_with_seed():
+def test_random_player_is_reproducible_with_seed() -> None:
     a = RandomPlayer(random.Random(42))
     b = RandomPlayer(random.Random(42))
     assert [a.choose([]) for _ in range(20)] == [b.choose([]) for _ in range(20)]
 
 
-def test_random_player_uses_all_moves():
+def test_random_player_uses_all_moves() -> None:
     bot = RandomPlayer(random.Random(0))
     assert {bot.choose([]) for _ in range(100)} == set(Move)
 
 
-def test_copycat_repeats_opponents_last_move():
+def test_copycat_repeats_opponents_last_move() -> None:
     bot = CopycatPlayer(random.Random(0))
     history = [Turn(mine=Move.ROCK, theirs=Move.PAPER), Turn(mine=Move.ROCK, theirs=Move.SCISSORS)]
     assert bot.choose(history) is Move.SCISSORS
 
 
 @pytest.mark.parametrize("name", sorted(OPPONENTS))
-def test_every_registered_opponent_follows_the_player_protocol(name):
+def test_every_registered_opponent_follows_the_player_protocol(name: str) -> None:
     bot = make_opponent(name, random.Random(0))
     assert isinstance(bot, Player)
     assert bot.choose([]) in set(Move)
 
 
-def test_unknown_opponent_gives_helpful_error():
+def test_unknown_opponent_gives_helpful_error() -> None:
     with pytest.raises(ValueError, match="Available"):
         make_opponent("skynet")

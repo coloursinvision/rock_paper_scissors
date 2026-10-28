@@ -35,6 +35,7 @@ rock_paper_scissors --opponent copycat --rounds 5
 
 ruff check .
 ruff format --check .
+mypy
 pytest
 ```
 

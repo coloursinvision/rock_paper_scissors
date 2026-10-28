@@ -14,17 +14,17 @@ from rock_paper_scissors.moves import Move
         ("s", Move.SCISSORS),
     ],
 )
-def test_parse_accepts_names_and_shortcuts(text, expected):
+def test_parse_accepts_names_and_shortcuts(text: str, expected: Move) -> None:
     assert Move.parse(text) is expected
 
 
 @pytest.mark.parametrize("text", ["", "rok", "lizard", "x"])
-def test_parse_rejects_unknown_text(text):
+def test_parse_rejects_unknown_text(text: str) -> None:
     with pytest.raises(ValueError, match="not a move"):
         Move.parse(text)
 
 
-def test_every_move_beats_exactly_one_other_move():
+def test_every_move_beats_exactly_one_other_move() -> None:
     assert {m.beats for m in Move} == set(Move)
     for move in Move:
         assert move.beats is not move

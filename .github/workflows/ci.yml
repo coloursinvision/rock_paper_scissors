@@ -42,6 +42,10 @@ jobs:
           conda activate ci
           ruff check .
           ruff format --check .
+      - name: Type check
+        run: |
+          conda activate ci
+          mypy
       - name: Test
         run: |
           conda activate ci

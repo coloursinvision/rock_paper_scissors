@@ -17,15 +17,15 @@ from rock_paper_scissors.rules import Outcome, judge
         (Move.PAPER, Move.SCISSORS, Outcome.LOSE),
     ],
 )
-def test_judge(move, against, expected):
+def test_judge(move: Move, against: Move, expected: Outcome) -> None:
     assert judge(move, against) is expected
 
 
 @pytest.mark.parametrize("move", list(Move))
-def test_same_move_is_a_draw(move):
+def test_same_move_is_a_draw(move: Move) -> None:
     assert judge(move, move) is Outcome.DRAW
 
 
 @pytest.mark.parametrize(("a", "b"), list(itertools.product(Move, Move)))
-def test_judge_is_symmetric(a, b):
+def test_judge_is_symmetric(a: Move, b: Move) -> None:
     assert judge(b, a) is judge(a, b).flipped()
