@@ -8,3 +8,4 @@ dependencies:
   - hatchling>=1.32
   - pytest>=9.1
   - ruff>=0.17
+  - mypy>=2.4
