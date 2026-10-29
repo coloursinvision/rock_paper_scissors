@@ -37,6 +37,10 @@ jobs:
         run: |
           conda activate ci
           python -m pip install --no-deps --no-build-isolation --no-index --editable .
+      - name: Check link scripts
+        run: |
+          conda activate ci
+          python scripts/check_link_scripts.py "$CONDA_PREFIX"
       - name: Lint
         run: |
           conda activate ci
