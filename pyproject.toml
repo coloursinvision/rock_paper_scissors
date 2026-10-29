@@ -22,7 +22,7 @@ packages = ["src/rock_paper_scissors"]
 [tool.pytest.ini_options]
 minversion = "9.0"
 testpaths = ["tests"]
-pythonpath = ["src"]
+pythonpath = ["src", "scripts"]
 addopts = "-q --strict-markers --strict-config"
 xfail_strict = true
 filterwarnings = ["error"]
@@ -30,14 +30,14 @@ filterwarnings = ["error"]
 [tool.ruff]
 line-length = 100
 target-version = "py312"
-src = ["src", "tests"]
+src = ["src", "tests", "scripts"]
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "UP", "B", "SIM", "N"]
 
 [tool.mypy]
 python_version = "3.12"
-files = ["src", "tests"]
+files = ["src", "tests", "scripts"]
 strict = true
 warn_unreachable = true
 enable_error_code = ["ignore-without-code", "redundant-expr", "truthy-bool", "possibly-undefined"]
@@ -45,7 +45,7 @@ enable_error_code = ["ignore-without-code", "redundant-expr", "truthy-bool", "po
 [tool.coverage.run]
 branch = true
 source_pkgs = ["rock_paper_scissors"]
-source_dirs = ["tests"]
+source_dirs = ["tests", "scripts"]
 
 [tool.coverage.report]
 fail_under = 100
