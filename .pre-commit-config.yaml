@@ -1,0 +1,74 @@
+minimum_pre_commit_version: "4.4.0"
+repos:
+  - repo: local
+    hooks:
+      - id: trailing-whitespace
+        name: trim trailing whitespace
+        entry: trailing-whitespace-fixer
+        language: unsupported
+        types: [text]
+      - id: end-of-file-fixer
+        name: fix end of files
+        entry: end-of-file-fixer
+        language: unsupported
+        types: [text]
+      - id: mixed-line-ending
+        name: mixed line ending
+        entry: mixed-line-ending
+        language: unsupported
+        types: [text]
+        args: [--fix=lf]
+      - id: fix-byte-order-marker
+        name: fix utf-8 byte order marker
+        entry: fix-byte-order-marker
+        language: unsupported
+        types: [text]
+      - id: check-case-conflict
+        name: check for case conflicts
+        entry: check-case-conflict
+        language: unsupported
+      - id: check-added-large-files
+        name: check for added large files
+        entry: check-added-large-files
+        language: unsupported
+      - id: check-merge-conflict
+        name: check for merge conflicts
+        entry: check-merge-conflict
+        language: unsupported
+        types: [text]
+      - id: check-symlinks
+        name: check for broken symlinks
+        entry: check-symlinks
+        language: unsupported
+        types: [symlink]
+      - id: check-yaml
+        name: check yaml
+        entry: check-yaml
+        language: unsupported
+        types: [yaml]
+      - id: check-toml
+        name: check toml
+        entry: check-toml
+        language: unsupported
+        types: [toml]
+      - id: debug-statements
+        name: debug statements (python)
+        entry: debug-statement-hook
+        language: unsupported
+        types: [python]
+      - id: name-tests-test
+        name: python tests naming
+        entry: name-tests-test
+        language: unsupported
+        files: '(^|/)tests/.+\.py$'
+        args: [--pytest-test-first]
+      - id: detect-private-key
+        name: detect private key
+        entry: detect-private-key
+        language: unsupported
+        types: [text]
+      - id: check-text
+        name: check for characters outside tab, line feed and printable ASCII
+        entry: python scripts/check_text.py
+        language: unsupported
+        types: [text]

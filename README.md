@@ -29,10 +29,12 @@ cd rock_paper_scissors
 conda create --name rock_paper_scissors --file conda-lock.yml
 conda activate rock_paper_scissors
 python -m pip install --no-deps --no-build-isolation --no-index --editable .
+pre-commit install
 
 rock_paper_scissors              # play until you type q
 rock_paper_scissors --opponent copycat --rounds 5
 
+pre-commit run --all-files
 ruff check .
 ruff format --check .
 mypy
@@ -41,6 +43,12 @@ coverage report
 ```
 
 `python -m rock_paper_scissors` runs the same command.
+
+`pre-commit install` adds a git hook that runs the file checks from
+`.pre-commit-config.yaml` on every commit: whitespace, line endings,
+YAML and TOML syntax, private keys, and characters outside tab, line
+feed and printable ASCII. The hooks call tools from the environment, so
+commit from a shell where it is active.
 
 Every dependency comes from `conda-lock.yml`, which pins each package
 with its hash for linux-64, osx-64, osx-arm64 and win-64. The lock file
