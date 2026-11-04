@@ -1,0 +1,3 @@
+# Locked together with environment.yml; only the Python version differs.
+dependencies:
+  - python=3.13.*

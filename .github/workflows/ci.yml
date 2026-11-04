@@ -9,12 +9,25 @@ permissions:
 
 jobs:
   test:
+    name: test (${{ matrix.os }}, Python ${{ matrix.python }})
     runs-on: ${{ matrix.os }}
     timeout-minutes: 30
     strategy:
       fail-fast: false
       matrix:
         os: [ubuntu-latest, macos-latest, macos-15-intel, windows-latest]
+        python: ["3.12", "3.15"]
+        include:
+          - python: "3.12"
+            lock: conda-lock.yml
+          - python: "3.15"
+            lock: python_versions/python_3_15.conda-lock.yml
+          - os: ubuntu-latest
+            python: "3.13"
+            lock: python_versions/python_3_13.conda-lock.yml
+          - os: ubuntu-latest
+            python: "3.14"
+            lock: python_versions/python_3_14.conda-lock.yml
     defaults:
       run:
         shell: bash -el {0}
@@ -32,7 +45,9 @@ jobs:
           auto-activate: "false"
           conda-remove-defaults: "true"
       - name: Create environment from lock file
-        run: conda create --yes --name ci --file conda-lock.yml
+        env:
+          LOCK_FILE: ${{ matrix.lock }}
+        run: conda create --yes --name ci --file "$LOCK_FILE" --format conda-lock-v1
       - name: Install project
         run: |
           conda activate ci
