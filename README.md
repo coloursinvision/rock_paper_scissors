@@ -56,6 +56,10 @@ is generated from `environment.yml`, the list of direct dependencies.
 The `pip` step installs only this package, without dependencies, build
 isolation or a package index.
 
+CI tests every supported Python version, 3.12 to 3.15. Each file in
+`python_versions/` sets only a Python version and is locked together
+with `environment.yml` into the lock file next to it.
+
 ## How it is organised
 
 ```text
