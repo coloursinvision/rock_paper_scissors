@@ -14,8 +14,8 @@ from rock_paper_scissors.players.random_bot import RandomPlayer
 OpponentFactory = Callable[[random.Random], Player]
 
 OPPONENTS: dict[str, OpponentFactory] = {
-    "random": lambda rng: RandomPlayer(rng),
-    "copycat": lambda rng: CopycatPlayer(rng),
+    "random": RandomPlayer,
+    "copycat": CopycatPlayer,
 }
 
 

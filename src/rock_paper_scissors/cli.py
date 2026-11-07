@@ -54,9 +54,10 @@ def describe_score(score: Score, them: str) -> str:
 
 
 def main(argv: Sequence[str] | None = None) -> int:
-    args = build_parser().parse_args(argv)
+    parser = build_parser()
+    args = parser.parse_args(argv)
     if args.rounds is not None and args.rounds < 1:
-        build_parser().error("--rounds must be at least 1")
+        parser.error("--rounds must be at least 1")
 
     human = HumanPlayer()
     opponent = make_opponent(args.opponent, random.Random(args.seed))
@@ -73,6 +74,7 @@ def main(argv: Sequence[str] | None = None) -> int:
     except KeyboardInterrupt:
         print()
 
-    final = describe_score(match.score, opponent.name)
-    print(f"Game over after {match.score.rounds} round(s). {final}")
+    score = match.score
+    final = describe_score(score, opponent.name)
+    print(f"Game over after {score.rounds} round(s). {final}")
     return 0
