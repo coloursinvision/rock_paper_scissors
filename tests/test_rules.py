@@ -5,6 +5,8 @@ import pytest
 from rock_paper_scissors.moves import Move
 from rock_paper_scissors.rules import Outcome, judge
 
+OPPOSITE = {Outcome.WIN: Outcome.LOSE, Outcome.LOSE: Outcome.WIN, Outcome.DRAW: Outcome.DRAW}
+
 
 @pytest.mark.parametrize(
     ("move", "against", "expected"),
@@ -28,4 +30,4 @@ def test_same_move_is_a_draw(move: Move) -> None:
 
 @pytest.mark.parametrize(("a", "b"), list(itertools.product(Move, Move)))
 def test_judge_is_symmetric(a: Move, b: Move) -> None:
-    assert judge(b, a) is judge(a, b).flipped()
+    assert judge(b, a) is OPPOSITE[judge(a, b)]

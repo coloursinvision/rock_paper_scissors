@@ -12,14 +12,6 @@ class Outcome(StrEnum):
     LOSE = "lose"
     DRAW = "draw"
 
-    def flipped(self) -> Outcome:
-        """The same result seen from the other player's side."""
-        if self is Outcome.WIN:
-            return Outcome.LOSE
-        if self is Outcome.LOSE:
-            return Outcome.WIN
-        return Outcome.DRAW
-
 
 def judge(move: Move, against: Move) -> Outcome:
     """Result for the player who played ``move``."""
