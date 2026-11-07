@@ -93,7 +93,7 @@ def test_cli_ends_cleanly_on_keyboard_interrupt(
         raise KeyboardInterrupt
 
     monkeypatch.setattr("builtins.input", interrupt)
-    assert main(["--seed", "1"]) == 0
+    assert main(["--seed", "1"]) == 130
     assert "Game over after 0 round(s)" in capsys.readouterr().out
 
 

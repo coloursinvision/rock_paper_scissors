@@ -14,6 +14,9 @@ VERDICT = {
     Outcome.DRAW: "It's a draw.",
 }
 
+# 128 + SIGINT, the status a shell reports for a program stopped by Ctrl+C.
+EXIT_INTERRUPTED = 130
+
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
@@ -64,6 +67,7 @@ def main(argv: Sequence[str] | None = None) -> int:
     match = Match(human, opponent)
 
     print(f"Rock, Paper, Scissors: {human.name} vs {opponent.name}.")
+    exit_code = 0
     try:
         while args.rounds is None or len(match.history) < args.rounds:
             result = match.play_round()
@@ -73,8 +77,9 @@ def main(argv: Sequence[str] | None = None) -> int:
         pass
     except KeyboardInterrupt:
         print()
+        exit_code = EXIT_INTERRUPTED
 
     score = match.score
     final = describe_score(score, opponent.name)
     print(f"Game over after {score.rounds} round(s). {final}")
-    return 0
+    return exit_code
