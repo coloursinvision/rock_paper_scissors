@@ -33,7 +33,7 @@ target-version = "py312"
 src = ["src", "tests", "scripts"]
 
 [tool.ruff.lint]
-select = ["E", "F", "I", "UP", "B", "SIM", "N"]
+select = ["E", "F", "I", "UP", "B", "SIM", "N", "PGH004", "RUF100", "RUF102"]
 
 [tool.mypy]
 python_version = "3.12"
