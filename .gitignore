@@ -20,8 +20,9 @@ dist/
 .coverage
 htmlcov/
 
-# Editors and OS
-.vscode/
+# Editors and OS: only the shared extension recommendations are tracked.
+.vscode/*
+!.vscode/extensions.json
 .idea/
 .DS_Store
 Thumbs.db
