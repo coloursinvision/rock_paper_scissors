@@ -98,6 +98,12 @@ jobs:
         run: |
           conda activate ci
           pre-commit run --all-files --show-diff-on-failure
+      - name: Check commit messages
+        run: |
+          conda activate ci
+          set -o pipefail
+          git log --no-merges --format='%H%x00%B%x00' HEAD \
+            | python scripts/check_commit_message.py --log
       - name: Scan history for secrets
         env:
           GITLEAKS_VERSION: 8.30.1

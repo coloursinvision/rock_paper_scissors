@@ -1,3 +1,4 @@
+import io
 import runpy
 from pathlib import Path
 
@@ -8,6 +9,7 @@ from check_commit_message import (
     SCISSORS,
     Finding,
     check_file,
+    check_log,
     check_message,
     check_subject,
     main,
@@ -165,3 +167,45 @@ def test_running_as_a_script_exits_with_main_status(monkeypatch: pytest.MonkeyPa
     with pytest.raises(SystemExit) as excinfo:
         runpy.run_path(check_commit_message.__file__, run_name="__main__")
     assert excinfo.value.code == 0
+
+
+def test_check_log_reports_findings_with_the_commit() -> None:
+    text = "aaa\0Add x\n\0\nbbb\0Add y.\nWhy.\n\0\n"
+    assert check_log(text) == [
+        "bbb:1: subject ends with a period",
+        "bbb:2: no blank line after the subject",
+    ]
+
+
+@pytest.mark.parametrize("text", ["", "\n"])
+def test_check_log_without_commits_is_an_error(text: str) -> None:
+    assert check_log(text) == ["no commits on standard input"]
+
+
+def test_main_reads_a_log_from_standard_input(
+    monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture[str]
+) -> None:
+    monkeypatch.setattr("sys.stdin", io.TextIOWrapper(io.BytesIO(b"aaa\0add x\xff\n\0\n")))
+    assert main(["--log"]) == 1
+    assert capsys.readouterr().out == (
+        "aaa:1: subject does not start with a capital letter\n"
+        "aaa:1: column 6: U+FFFD REPLACEMENT CHARACTER\n"
+    )
+
+
+def test_main_accepts_a_clean_log(
+    monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture[str]
+) -> None:
+    monkeypatch.setattr("sys.stdin", io.TextIOWrapper(io.BytesIO(b"aaa\0Add x\n\0\n")))
+    assert main(["--log"]) == 0
+    assert capsys.readouterr().out == ""
+
+
+def test_help_shows_the_log_format(
+    monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture[str]
+) -> None:
+    monkeypatch.setenv("COLUMNS", "200")
+    with pytest.raises(SystemExit) as excinfo:
+        main(["--help"])
+    assert excinfo.value.code == 0
+    assert "--format='%H%x00%B%x00'" in capsys.readouterr().out
