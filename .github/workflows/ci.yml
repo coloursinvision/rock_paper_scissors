@@ -40,7 +40,7 @@ jobs:
           persist-credentials: false
       - uses: conda-incubator/setup-miniconda@be893c923ea9cf1cf7cd510fbdde27c7e18cbdcb # v4.1.0
         with:
-          miniforge-version: 26.9.4-1
+          miniforge-version: 26.9.4-2
           activate-environment: ""
           auto-activate: "false"
           conda-remove-defaults: "true"
@@ -88,7 +88,7 @@ jobs:
           fetch-depth: 0
       - uses: conda-incubator/setup-miniconda@be893c923ea9cf1cf7cd510fbdde27c7e18cbdcb # v4.1.0
         with:
-          miniforge-version: 26.9.4-1
+          miniforge-version: 26.9.4-2
           activate-environment: ""
           auto-activate: "false"
           conda-remove-defaults: "true"
