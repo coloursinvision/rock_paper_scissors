@@ -1,4 +1,6 @@
 minimum_pre_commit_version: "4.4.0"
+default_install_hook_types: [pre-commit, commit-msg]
+default_stages: [pre-commit]
 repos:
   - repo: local
     hooks:
@@ -72,3 +74,8 @@ repos:
         entry: python scripts/check_text.py
         language: unsupported
         types: [text]
+      - id: check-commit-message
+        name: check the commit message
+        entry: python scripts/check_commit_message.py
+        language: unsupported
+        stages: [commit-msg]
