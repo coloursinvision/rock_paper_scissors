@@ -1,5 +1,5 @@
 minimum_pre_commit_version: "4.4.0"
-default_install_hook_types: [pre-commit, commit-msg]
+default_install_hook_types: [pre-commit, commit-msg, pre-push]
 default_stages: [pre-commit]
 repos:
   - repo: local
@@ -79,3 +79,38 @@ repos:
         entry: python scripts/check_commit_message.py
         language: unsupported
         stages: [commit-msg]
+      - id: ruff-check
+        name: ruff check
+        entry: ruff check .
+        language: unsupported
+        pass_filenames: false
+        always_run: true
+        stages: [pre-push]
+      - id: ruff-format
+        name: ruff format check
+        entry: ruff format --check .
+        language: unsupported
+        pass_filenames: false
+        always_run: true
+        stages: [pre-push]
+      - id: mypy
+        name: mypy
+        entry: mypy
+        language: unsupported
+        pass_filenames: false
+        always_run: true
+        stages: [pre-push]
+      - id: pytest
+        name: tests under coverage
+        entry: coverage run -m pytest
+        language: unsupported
+        pass_filenames: false
+        always_run: true
+        stages: [pre-push]
+      - id: coverage-report
+        name: coverage report
+        entry: coverage report
+        language: unsupported
+        pass_filenames: false
+        always_run: true
+        stages: [pre-push]
