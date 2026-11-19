@@ -74,6 +74,12 @@ repos:
         entry: python scripts/check_text.py
         language: unsupported
         types: [text]
+      - id: check-miniforge-version
+        name: check the Miniforge version in CI and the dev container
+        entry: python scripts/check_miniforge_version.py
+        language: unsupported
+        files: '^(\.devcontainer/Dockerfile|\.github/workflows/ci\.yml)$'
+        pass_filenames: false
       - id: check-commit-message
         name: check the commit message
         entry: python scripts/check_commit_message.py
