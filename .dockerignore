@@ -1,0 +1,4 @@
+# The development container image needs only these files from the repository.
+*
+!conda-lock.yml
+!scripts/check_link_scripts.py

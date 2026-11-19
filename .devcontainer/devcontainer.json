@@ -1,0 +1,21 @@
+{
+  "name": "rock_paper_scissors",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": "..",
+    "options": ["--platform=linux/amd64"]
+  },
+  "updateContentCommand": "conda run --name rock_paper_scissors --no-capture-output python -m pip install --no-deps --no-build-isolation --no-index --editable .",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "EditorConfig.EditorConfig",
+        "ms-python.python",
+        "charliermarsh.ruff"
+      ],
+      "settings": {
+        "python.defaultInterpreterPath": "/home/vscode/miniforge3/envs/rock_paper_scissors/bin/python"
+      }
+    }
+  }
+}
