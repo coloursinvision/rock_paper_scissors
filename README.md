@@ -44,11 +44,14 @@ coverage report
 
 `python -m rock_paper_scissors` runs the same command.
 
-`pre-commit install` adds a git hook that runs the file checks from
-`.pre-commit-config.yaml` on every commit: whitespace, line endings,
-YAML and TOML syntax, private keys, and characters outside tab, line
-feed and printable ASCII. The hooks call tools from the environment, so
-commit from a shell where it is active.
+`pre-commit install` adds three git hooks from `.pre-commit-config.yaml`.
+On every commit they check whitespace, line endings, YAML and TOML
+syntax, private keys, characters outside tab, line feed and printable
+ASCII, and that CI and the development container use one Miniforge
+version. They then check the commit message, and before every push they
+run the same lint, type checks and tests as CI. The hooks call tools
+from the environment, so commit and push from a shell where it is
+active.
 
 Every dependency comes from `conda-lock.yml`, which pins each package
 with its hash for linux-64, osx-64, osx-arm64 and win-64. The lock file
@@ -59,6 +62,31 @@ isolation or a package index.
 CI tests every supported Python version, 3.12 to 3.15. Each file in
 `python_versions/` sets only a Python version and is locked together
 with `environment.yml` into the lock file next to it.
+
+## Development container
+
+`.devcontainer/` defines a development container: Ubuntu 26.04,
+Miniforge in the same version as CI, checked against the SHA-256 of its
+installer, and the environment from `conda-lock.yml`. Open the folder in
+VS Code with the Dev Containers extension and run "Dev Containers:
+Reopen in Container", or create a codespace from the Code button on
+GitHub. The package is then installed in editable mode, and the checks
+above run in the container's terminal after
+`conda activate rock_paper_scissors`.
+
+- The image is built for linux/amd64, the platform CI tests; on Apple
+  Silicon it runs under emulation.
+- The image has no system Python, so the Python extension may offer to
+  install uv and Python. Choose "Don't ask again": the interpreter is
+  the conda environment at
+  `/home/vscode/miniforge3/envs/rock_paper_scissors/bin/python`. If
+  another environment is selected, pick this one with "Python: Select
+  Interpreter".
+- With a local folder, commit and push on the host. The folder is
+  mounted from the host, so hooks installed in the container would point
+  to paths the host does not have, and the host's signing key is not in
+  the container. A codespace has its own clone, so there
+  `pre-commit install`, commits and pushes work as on a local machine.
 
 ## How it is organised
 
